@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      host: 60.205.112.118
+      port: 27017
+      username: "root"  # 手动输入，不要复制粘贴，确保前后无空格/制表符
+      password: "123456"  # 纯数字，无任何特殊字符、空格
+      database: aimin
+      authentication-database: admin

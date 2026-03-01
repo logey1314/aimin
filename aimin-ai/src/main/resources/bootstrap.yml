@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: aimin-ai
+  ai:
+    ollama:
+      base-url: http://127.0.0.1:11434
+      chat:
+        options:
+          model: deepseek-r1:1.5b
+  cloud:
+    nacos:
+      discovery:
+        namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
+#        group:
+      server-addr: 127.0.0.1:8848
+  config:
+    import:
+    - classpath:mongo.yml
+
+server:
+  port: 8082
+  servlet:
+    context-path: /aimin-ai  # listen tcp 127.0.0.1:11434

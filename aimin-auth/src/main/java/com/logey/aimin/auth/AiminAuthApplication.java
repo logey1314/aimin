@@ -1,0 +1,13 @@
+package com.logey.aimin.auth;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AiminAuthApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AiminAuthApplication.class, args);
+    }
+
+}

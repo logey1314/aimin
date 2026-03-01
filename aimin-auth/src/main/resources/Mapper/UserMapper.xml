@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace：必须与对应的Mapper接口全类名一致
+    替换成你自己的接口路径，例如：com.xxx.xxx.mapper.UserMapper
+-->
+<mapper namespace="com.logey.aimin.auth.Mapper.UserMapper">
+
+
+
+</mapper>
