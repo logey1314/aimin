@@ -1,0 +1,105 @@
+spring:
+  config:
+    import:
+      - classpath:redis.yml
+  application:
+    name: aimin-gateway
+  cloud:
+    nacos:
+      discovery:
+        namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
+      server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: aimin-auth
+          uri: lb://aimin-auth
+          predicates:
+            - Path=/aimin-auth/**
+        - id: aimin-ai
+          uri: lb://aimin-ai
+          predicates:
+              - Path=/aimin-ai/**
+
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /aimin-ai  # listen tcp 127.0.0.1:11434
+
+## Sa-Token配置（必须与aimin-auth保持一致）
+#sa-token:
+#  token-name: aimin-auth-token
+#  timeout: 2592000
+#  active-timeout: -1
+#  is-concurrent: true
+#  is-share: true  # 网关需要设置为true，共享token
+#  token-style: uuid
+#  is-log: true
+
+#spring:
+#  data:
+#    redis:
+#      # 连接超时（统一用毫秒，避免混合单位解析问题）
+#      timeout: 30000
+#      connect-timeout: 30000
+#      # 单机模式配置（替代原顶层的 database/host/port/password）
+#      standalone:
+#        database: 1
+#        host: 60.205.112.118
+#        port: 6379
+#        password: 123456
+#      # Lettuce 连接池配置（前缀也同步迁移）
+#      lettuce:
+#        pool:
+#          max-active: 200
+#          max-wait: -1ms
+#          max-idle: 10
+#          min-idle: 0
+#  application:
+#    name: aimin-gateway
+#  cloud:
+#    nacos:
+#      discovery:
+#        namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
+#        server-addr: 127.0.0.1:8848
+#    gateway:
+#      routes:
+#        - id: aimin-auth
+#          uri: lb://aimin-auth
+#          predicates:
+#            - Path=/aimin-auth/**
+#        - id: aimin-ai
+#          uri: lb://aimin-ai
+#          predicates:
+#            - Path=/aimin-ai/**
+#      # 网关全局跨域配置（可选）
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowed-origins: "*"
+#            allowed-methods: "*"
+#            allowed-headers: "*"
+#            allow-credentials: true
+#
+#server:
+#  port: 8080
+#  # 网关是 WebFlux 环境，移除无效的 servlet.context-path
+#  # servlet:
+#  #   context-path: /aimin-ai
+#
+## Sa-Token 配置（与 aimin-auth 保持一致）
+#sa-token:
+#  token-name: aimin-auth-token
+#  timeout: 2592000
+#  active-timeout: -1
+#  is-concurrent: true
+#  is-share: true
+#  token-style: uuid
+#  is-log: true
+#  # Sa-Token 自身的 Redis 配置（前缀仍为 sa-token.redis，无需修改）
+#  redis:
+#    database: 1
+#    host: 60.205.112.118
+#    port: 6379
+#    password: 123456

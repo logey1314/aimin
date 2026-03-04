@@ -1,0 +1,19 @@
+spring:
+  config:
+    import:
+      - classpath:application.yml
+      #- classpath:redis.yml
+  application:
+    name: aimin-drug
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
+      server-addr: 127.0.0.1:8848
+
+# ????????server???2????
+server:
+  port: 8083 # ????8081???8080??
+  servlet:
+    context-path: /aimin-drug

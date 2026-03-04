@@ -1,14 +1,13 @@
-package com.logey.aimin.auth;
+package com.logey.aimin.drug;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class AiminAuthApplication {
+public class AiminDrugApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AiminAuthApplication.class, args);
+        SpringApplication.run(AiminDrugApplication.class, args);
     }
 
 }

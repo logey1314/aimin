@@ -25,6 +25,9 @@
     <modules>
         <module>aimin-ds</module>
         <module>aimin-mongo</module>
+        <module>aimin-redis</module>
+        <module>aimin-base</module>
+        <module>aimin-satoken</module>
     </modules>
 
 </project>

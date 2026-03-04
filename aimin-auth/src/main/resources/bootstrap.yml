@@ -2,7 +2,8 @@
 spring:
   config:
     import:
-      - classpath:application.yml # 关键：classpath:后不能加空格
+      - classpath:application.yml
+      - classpath:redis.yml
   application:
     name: aimin-auth
   cloud:
@@ -29,6 +30,7 @@ sa-token:
   timeout: 2592000
   active-timeout: -1
   is-concurrent: true
-  is-share: false
+  is-share: true  # 微服务架构必须设置为true
   token-style: uuid
   is-log: true
+
