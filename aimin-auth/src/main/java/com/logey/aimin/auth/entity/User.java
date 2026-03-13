@@ -1,6 +1,7 @@
 package com.logey.aimin.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.yulichang.annotation.EntityMapping;
 import com.logey.aimin.ds.annotation.DictTranslate;
@@ -27,5 +28,8 @@ public class User {
 
     @TableField(exist = false)
     private  String sexName;
+
+    @TableLogic
+    private int deleted;
 
 }

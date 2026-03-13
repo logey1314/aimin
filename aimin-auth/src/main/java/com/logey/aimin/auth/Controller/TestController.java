@@ -114,7 +114,17 @@ public class TestController {
     @GetMapping("/userLogin")
     public String userLogin() {
         SaTokenInfo tokenInfo = UserStpUtil.miniLogin("1");
+//        List<Permisson> list=userservice.getAllPermission();
+//        template.opsForList().leftPush("1",list);
         return tokenInfo.getTokenValue();
+    }
+
+    @GetMapping("/userLoginOut")
+    public Result<?> userLoginOut() {
+        String loginId = (String) UserStpUtil.stpLogic.getLoginId();
+        template.delete(loginId);
+        UserStpUtil.stpLogic.logout();
+        return Result.success();
     }
 
     @GetMapping("/userLoginCheck")
@@ -133,6 +143,12 @@ public class TestController {
         return "userLoginCheck: success";
     }
 
+    @GetMapping("/permissio1")
+    public String permissio1() {
+
+        UserStpUtil.stpLogic.checkPermission("permissio1");
+        return "success";
+    }
 
 
 

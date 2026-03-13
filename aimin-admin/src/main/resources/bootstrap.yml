@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: aimin-admin
+  cloud:
+    nacos:
+      discovery:
+        namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
+      server-addr: 127.0.0.1:8848
+  config:
+    import:
+      - classpath:application.yml
+      - classpath:redis.yml
+
+server:
+  port: 8084
+  servlet:
+    context-path: /aimin-admin

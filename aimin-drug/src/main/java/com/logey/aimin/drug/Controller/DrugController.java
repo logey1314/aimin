@@ -6,6 +6,8 @@ import com.logey.aimin.drug.entity.Drug;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -54,4 +56,48 @@ public class DrugController {
         return Result.success();
     }
 
+    @GetMapping("/categoryId/{categoryId}")
+    public Result<?> findDrugByCategoryId(@PathVariable Integer categoryId) {
+        List<Drug> list = drugService.findDrugByCategoryId(categoryId);
+        return Result.success(list);
+    }
+    @GetMapping("/get/{id}")
+    public Result<Drug> get(@PathVariable Integer id){
+        return Result.success(drugService.get(id));
+    }
+
+    @GetMapping("/update")
+    public Result<?> update() {
+        Drug drug = new Drug();
+        drug.setDrugId(27);
+        drug.setName("复方板蓝根颗粒");
+        drug.setGenericName("板蓝根");
+        drug.setCategoryId(8);
+        drug.setBrand("白云山");
+        drug.setManufacturer("广州白云山和记黄埔中药有限公司");
+        drug.setDescription("具有清热解毒，凉血利咽的功效。用于风热感冒、咽喉肿痛、口咽干燥。");
+        drug.setDosageForm("颗粒剂");
+        drug.setStrength("10g*20袋");
+        drug.setPrice(new BigDecimal("32.00"));
+        drug.setDiscountPrice(null);  // 无折扣
+        drug.setPrescription(false);
+        drug.setShelfLife(24);
+        drug.setShelfLifeUnit(1);
+        drug.setStorageInstructions("遮光、密封保存");
+        drug.setCreateAt(LocalDateTime.now());
+        drug.setUpdateAt(LocalDateTime.now());
+        drug.setStatus((byte) 1);
+        drug.setDeleted(false);
+        drug.setCreatorId(1);
+        drug.setSku("SKU12345");
+        drug.setBarCode("6924567890123");
+        drug.setStockQuantity(100);
+        drugService.update(drug);
+        return Result.success();
+    }
+
+    @GetMapping("/delete/{id}")
+    public void delete(){
+        drugService.delete(27);
+    }
 }

@@ -16,6 +16,11 @@ public class Msg {
     private String conversationId;
     private Date date;
     private String type;
+    
+    public Msg() {
+        // No-args constructor for MongoDB deserialization
+    }
+    
     public Msg(String conversationId, Message message) {
         this.conversationId = conversationId;
         this.text= message.getText();

@@ -2,7 +2,7 @@ spring:
   config:
     import:
       - classpath:application.yml
-      #- classpath:redis.yml
+      - classpath:redis.yml
   application:
     name: aimin-drug
   cloud:
@@ -11,9 +11,20 @@ spring:
         enabled: true
         namespace: ba2e7f3d-23a3-4bf1-a8f5-6a5dfce1c259
       server-addr: 127.0.0.1:8848
+  cache:
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=20s
 
-# ????????server???2????
 server:
-  port: 8083 # ????8081???8080??
+  port: 8083
   servlet:
     context-path: /aimin-drug
+
+aimin:
+  cache:
+    dynamic: true
+    allowNullValues: true
+    l1CacheSize: 1000
+    l1CacheExpire: 10
+    l2CacheExpire: 20
+    cacheTimeUnit: SECONDS

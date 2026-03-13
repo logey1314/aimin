@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: aimin-mcp-server-stdio
+  main:
+    web-application-type: Servlet
+    banner-mode: off
+
+  ai:
+    mcp:
+      server:
+        name: aimin-mcp-server-stdio
+        version: 1.0.0
+        type: SYNC
+

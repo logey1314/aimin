@@ -32,7 +32,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope> <!-- 编译时生效，运行时不需要打包进项目 -->
         </dependency>
 
     </dependencies>

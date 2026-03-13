@@ -2,11 +2,35 @@ spring:
   application:
     name: aimin-ai
   ai:
+
     ollama:
       base-url: http://127.0.0.1:11434
       chat:
         options:
           model: deepseek-r1:1.5b
+      embedding:
+        options:
+          model: mxbai-embed-large:latest
+
+    vectorstore:
+      milvus:
+        initialize-schema: true # 开启自动初始化
+        client:
+          host: 192.168.75.129
+          port: 19530
+          username: "root"
+          password: "milvus"
+        databaseName: "default"
+        collectionName: "vector_store1"
+        embeddingDimension: 1024 # 向量维度（必须和实际一致）
+        indexType: IVF_FLAT
+        metricType: COSINE
+        # 补充索引创建的关键参数（Spring AI 1.0.0 需手动指定）
+        index-params: "{\"nlist\": 1024}" # IVF_FLAT 必须的参数，按需调整
+        # 可选：强制覆盖已有集合（首次创建建议开启）
+        drop-on-init: false # 设为 true 会先删除旧集合再重建（谨慎使用）
+        # 可选：指定分区名（无特殊需求可忽略）
+        partition-name: "default"
   cloud:
     nacos:
       discovery:

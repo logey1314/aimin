@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logey.aiminmcpserver.mapper.TableInfoMapper">
+
+    <select id="tableNames" resultType="java.util.Map">
+        SELECT
+            TABLE_NAME AS 表名,
+            TABLE_COMMENT AS 表注释
+        FROM
+            INFORMATION_SCHEMA.TABLES
+        WHERE
+            TABLE_SCHEMA = 'mydatabase'
+
+    </select>
+    <select id="getableInfo" resultType="java.util.Map" parameterType="string">
+        SELECT
+            COLUMN_NAME AS columnName,
+            COLUMN_COMMENT AS columnComment
+        FROM
+            INFORMATION_SCHEMA.COLUMNS
+        WHERE
+            TABLE_SCHEMA = 'mydatabase'
+          AND TABLE_NAME = #{tableName}
+        ORDER BY
+            ORDINAL_POSITION;
+
+    </select>
+</mapper>
