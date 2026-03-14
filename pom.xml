@@ -23,9 +23,7 @@
         <module>aimin-generator</module>
         <module>aimin-drug</module>
         <module>aimin-admin</module>
-        <module>aimin-mcp-server</module>
-        <module>aimin-mcp-client</module>
-        <module>aimin-mcp-server-stdio</module>
+        <module>aimin-mcp</module>
     </modules>
 
     <properties>

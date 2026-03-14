@@ -6,7 +6,7 @@
         <groupId>com.logey</groupId>
         <artifactId>aimin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>aimin-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>

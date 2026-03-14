@@ -1,0 +1,76 @@
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    baggage:
+      correlation:
+        enabled: true
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+    # 健康检查和观测配置
+    endpoint:
+      health:
+        show-details: always
+  zipkin:
+    tracing:
+      endpoint: http://192.168.75.129:9411/api/v2/spans
+
+
+spring:
+  application:
+    name: aimin-mcp-client
+  main:
+    web-application-type: servlet
+  ai:
+    tools:
+      observations:
+        include-content: true
+    chat:
+      client:
+        observations:
+          log-prompt: true
+      observations:
+        log-completion: true
+        log-prompt: true
+        include-error-logging: true
+    ollama:
+      base-url: http://127.0.0.1:11434
+      chat:
+        options:
+          model: qwen2.5:7b
+#      embedding:
+#        options:
+#          model: mxbai-embed-large:latest
+    mcp:
+      client:
+        enabled: true
+        name: my-mcp-client
+        version: 1.0.0
+        request-timeout: 30s
+        type: SYNC
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8090
+        toolcallback:
+          enabled: true
+        stdio:
+          root-change-notification: false
+          connections:
+            server2:
+              command: java
+              args:
+                - -Dspring.ai.mcp.server.stdio=true
+                - -Dspring.main.web-application-type=none
+                - -Dlogging.pattern.console=
+                - -jar
+                - F:\java\project\aimin\aimin\aimin-mcp\aimin-mcp-server-stdio\target\aimin-mcp-server-stdio-0.0.1-SNAPSHOT.jar
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"  #
+  include-application-name: false
+
+server:
+  port: 8091

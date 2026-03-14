@@ -4,16 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.logey</groupId>
-        <artifactId>aimin-common</artifactId>
+        <artifactId>aimin-mcp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.logey</groupId>
-    <artifactId>aimin-base</artifactId>
+    <artifactId>aimin-mcp-server-stdio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aimin-base</name>
-    <description>aimin-base</description>
-
+    <name>aimin-mcp-server-stdio</name>
+    <description>aimin-mcp-server-stdio</description>
     <properties>
         <java.version>21</java.version>
     </properties>
@@ -25,15 +24,13 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-server</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -41,9 +38,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
             </plugin>
         </plugins>
     </build>

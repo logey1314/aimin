@@ -8,6 +8,7 @@ import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvi
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,13 +21,14 @@ public class ChatClientConfig {
     private final VectorStore vectorStore;
 
     @Bean
-    public ChatClient chatClient (OllamaChatModel clientModel) {
+    public ChatClient chatClient (OllamaChatModel clientModel,ToolCallbackProvider toolCallbackProvider) {
 //        ChatMemory chatMemory = MessageWindowChatMemory.builder().build();
         MessageChatMemoryAdvisor chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
         ChatClient chatClient = ChatClient.builder(clientModel)
                 .defaultAdvisors(
                         chatMemoryAdvisor,
                         new QuestionAnswerAdvisor(vectorStore))
+                .defaultToolCallbacks(toolCallbackProvider)
                 .build();
         return chatClient;
 

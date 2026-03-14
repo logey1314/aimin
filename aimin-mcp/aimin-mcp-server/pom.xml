@@ -4,30 +4,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.logey</groupId>
-        <artifactId>aimin</artifactId>
+        <artifactId>aimin-mcp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.logey</groupId>
-    <artifactId>aimin-admin</artifactId>
+    <artifactId>aimin-mcp-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aimin-admin</name>
-    <description>aimin-admin</description>
+    <name>aimin-mcp-server</name>
+    <description>aimin-mcp-server</description>
 
     <properties>
         <java.version>21</java.version>
     </properties>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.logey</groupId>
-            <artifactId>aimin-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
         </dependency>
 
         <dependency>
@@ -37,34 +35,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.logey</groupId>
-            <artifactId>aimin-redis</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope> <!-- 编译时生效，运行时不需要打包进项目 -->
         </dependency>
 
     </dependencies>
